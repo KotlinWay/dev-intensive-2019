@@ -33,7 +33,7 @@ fun Date.add(value: Int, timeUnits: TimeUnits = TimeUnits.SECOND): Date {
 
 fun Date.humanizeDiff(diffDate: Date = Date()): String {
 
-    var delta = diffDate.time - this.time
+    var delta =  this.time - diffDate.time
 
     var isDatePositive = delta >= 0
 
