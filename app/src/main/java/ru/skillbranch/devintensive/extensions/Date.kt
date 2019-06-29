@@ -117,7 +117,7 @@ enum class TimeUnits {
         if (value < 0) lv = value * -1L
 
         return when (lv) {
-            1L -> "секунду"
+            1L -> "1 секунду"
             in 2..4 -> "$lv секунды"
             in 11..19 -> "$lv секунд"
             else -> {
@@ -138,7 +138,7 @@ enum class TimeUnits {
         var lv = value
         if (value < 0) lv = value * -1L
         return when (lv) {
-            1L -> "минуту"
+            1L -> "1 минуту"
             in 2..4 -> "$lv минуты"
             in 11..19 -> "$lv минут"
             else -> {
@@ -158,7 +158,7 @@ enum class TimeUnits {
         var lv = value
         if (value < 0) lv = value * -1L
         return when (lv) {
-            1L -> "час"
+            1L -> "1 час"
             in 2..4 -> "$lv часа"
             in 11..19 -> "$lv часов"
             else -> {
@@ -178,7 +178,7 @@ enum class TimeUnits {
         var lv = value
         if (value < 0) lv = value * -1L
         return when (lv) {
-            1L -> "день"
+            1L -> "1 день"
             in 2..4 -> "$lv дня"
             in 11..19 -> "$lv дней"
             else -> {
@@ -218,7 +218,7 @@ enum class TimeUnits {
         var lv = value
         if (value < 0) lv = value * -1L
         return when (lv) {
-            1L -> "год"
+            1L -> "1 год"
             in 2..4 -> "$lv года"
             in 11..19 -> "$lv лет"
             else -> {

@@ -1,6 +1,5 @@
-package ru.skillbranch.devintensive
+package ru.skillbranch.devintensive.utils
 
-import java.lang.IllegalArgumentException
 import java.lang.StringBuilder
 
 object Utils {
