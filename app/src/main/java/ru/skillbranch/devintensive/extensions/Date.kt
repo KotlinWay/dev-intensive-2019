@@ -1,5 +1,4 @@
 package ru.skillbranch.devintensive.extensions
-
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -46,7 +45,7 @@ fun Date.humanizeDiff(diffDate: Date = Date()): String {
         in MINUTE until HOUR -> delta / MINUTE to TimeUnits.MINUTE
         in HOUR until DAY -> delta / HOUR to TimeUnits.HOUR
         in DAY until MONTH -> delta / DAY to TimeUnits.DAY
-        in MONTH until YEAR -> delta / MONTH to TimeUnits.MONTH
+        in MONTH until YEAR -> delta / DAY to TimeUnits.MONTH
         else -> delta / YEAR to TimeUnits.YEAR
     }
     return timeUnit.toStringDeltaValue(value, isDatePositive)
@@ -66,7 +65,7 @@ fun Date.humanizeDiff(): String {
         in MINUTE until HOUR -> delta / MINUTE to TimeUnits.MINUTE
         in HOUR until DAY -> delta / HOUR to TimeUnits.HOUR
         in DAY until MONTH -> delta / DAY to TimeUnits.DAY
-        in MONTH until YEAR -> delta / MONTH to TimeUnits.MONTH
+        in MONTH until YEAR -> delta / DAY to TimeUnits.MONTH
         else -> delta / YEAR to TimeUnits.YEAR
     }
     return timeUnit.toStringDeltaValue(value, isDatePositive)
@@ -87,7 +86,7 @@ enum class TimeUnits {
             MINUTE -> getNormalFormMinute(value)
             HOUR -> getNormalFormHour(value)
             DAY -> getNormalFormDay(value)
-            MONTH -> getNormalFormMonth(value)
+            MONTH -> getNormalFormDay(value)
             YEAR -> getNormalFormYear(value)
         }
 
@@ -118,7 +117,7 @@ enum class TimeUnits {
         if (value < 0) lv = value * -1L
 
         return when (lv) {
-            1L -> "$lv секунду"
+            1L -> "секунду"
             in 2..4 -> "$lv секунды"
             in 11..19 -> "$lv секунд"
             else -> {
@@ -139,7 +138,7 @@ enum class TimeUnits {
         var lv = value
         if (value < 0) lv = value * -1L
         return when (lv) {
-            1L -> "$lv минуту"
+            1L -> "минуту"
             in 2..4 -> "$lv минуты"
             in 11..19 -> "$lv минут"
             else -> {
@@ -159,7 +158,7 @@ enum class TimeUnits {
         var lv = value
         if (value < 0) lv = value * -1L
         return when (lv) {
-            1L -> "$lv час"
+            1L -> "час"
             in 2..4 -> "$lv часа"
             in 11..19 -> "$lv часов"
             else -> {
@@ -179,7 +178,7 @@ enum class TimeUnits {
         var lv = value
         if (value < 0) lv = value * -1L
         return when (lv) {
-            1L -> "$lv день"
+            1L -> "день"
             in 2..4 -> "$lv дня"
             in 11..19 -> "$lv дней"
             else -> {
@@ -195,31 +194,31 @@ enum class TimeUnits {
         }
     }
 
-    private fun getNormalFormMonth(value: Long): String {
-        var lv = value
-        if (value < 0) lv = value * -1L
-        return when (lv) {
-            1L -> "$lv месяц"
-            in 2..4 -> "$lv месяца"
-            in 11..19 -> "$lv месяцев"
-            else -> {
-                if (lv / 10 == 1L) {
-                    "$lv месяцев"
-                } else if (lv / 10 in 2..4) {
-                    "$lv месяца"
-                } else if (lv / 10 == 0L) {
-                    "$lv месяцев"
-                } else
-                    "$lv месяцев"
-            }
-        }
-    }
+//    private fun getNormalFormMonth(value: Long): String {
+//        var lv = value
+//        if (value < 0) lv = value * -1L
+//        return when (lv) {
+//            1L -> "месяц"
+//            in 2..4 -> "$lv месяца"
+//            in 11..19 -> "$lv месяцев"
+//            else -> {
+//                if (lv / 10 == 1L) {
+//                    "$lv месяцев"
+//                } else if (lv / 10 in 2..4) {
+//                    "$lv месяца"
+//                } else if (lv / 10 == 0L) {
+//                    "$lv месяцев"
+//                } else
+//                    "$lv месяцев"
+//            }
+//        }
+//    }
 
     private fun getNormalFormYear(value: Long): String {
         var lv = value
         if (value < 0) lv = value * -1L
         return when (lv) {
-            1L -> "$lv год"
+            1L -> "год"
             in 2..4 -> "$lv года"
             in 11..19 -> "$lv лет"
             else -> {
