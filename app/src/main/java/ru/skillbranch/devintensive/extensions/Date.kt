@@ -31,8 +31,14 @@ fun Date.add(value: Int, timeUnits: TimeUnits = TimeUnits.SECOND): Date {
 }
 
 fun Date.humanizeDiff(diffDate: Date = Date()): String {
+    var cal = GregorianCalendar.getInstance()
+    var cal2 = GregorianCalendar.getInstance()
+    cal.time = this
+    cal2.time = diffDate
+    cal.set(GregorianCalendar.MILLISECOND, 0)
+    cal2.set(GregorianCalendar.MILLISECOND, 0)
 
-    var delta =  this.time - diffDate.time
+    var delta =  cal.time.time - cal2.time.time
 
     var isDatePositive = delta >= 0
 
@@ -52,7 +58,13 @@ fun Date.humanizeDiff(diffDate: Date = Date()): String {
 }
 
 fun Date.humanizeDiff(): String {
-    var delta = this.time - Date().time
+    var cal = GregorianCalendar.getInstance()
+    var cal2 = GregorianCalendar.getInstance()
+    cal.time = this
+    cal2.time = Date()
+    cal.set(GregorianCalendar.MILLISECOND, 0)
+    cal2.set(GregorianCalendar.MILLISECOND, 0)
+    var delta = cal.time.time - cal2.time.time
 
     var isDatePositive = delta >= 0
 
@@ -163,7 +175,7 @@ enum class TimeUnits {
             in 11..19 -> "$lv часов"
             else -> {
                 if (lv % 10 == 1L) {
-                    "$lv часов"
+                    "$lv час"
                 } else if (lv % 10 in 2..4) {
                     "$lv часа"
                 } else if (lv % 10 == 0L) {
