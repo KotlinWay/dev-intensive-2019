@@ -18,7 +18,7 @@ fun String.truncate(value: Int = 16): String {
     return if (this.trimEnd().length <= value) {
         this.trimEnd()
     } else {
-        var result = this.substring(0, value-1).trim()
+        var result = this.substring(0, value+1).trim()
         return when (result) {
             "" -> result
             else -> "${result}..."
