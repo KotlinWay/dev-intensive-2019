@@ -16,7 +16,7 @@ import java.util.*
 
 fun String.truncate(value: Int = 16): String {
     return if (this.trimEnd().length <= value) {
-        this
+        this.trimEnd()
     } else {
         var result = this.substring(0, value).trim()
         return when (result) {
