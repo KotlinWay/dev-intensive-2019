@@ -24,7 +24,6 @@ object Utils {
     }
 
 
-
     fun toInitials(firstName:String?, lastName:String?):String?{
         val firstChar = firstName?.trim()?.firstOrNull()?.toUpperCase()
         val secondChar = lastName?.trim()?.firstOrNull()?.toUpperCase()
