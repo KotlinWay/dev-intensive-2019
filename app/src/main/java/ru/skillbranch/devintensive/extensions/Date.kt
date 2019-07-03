@@ -29,7 +29,18 @@ fun Date.add(value: Int, timeUnits: TimeUnits = TimeUnits.SECOND): Date {
     this.time = time
     return this
 }
-
+fun Date.add2(value: Int, units: TimeUnits = TimeUnits.SECOND): Date {
+    var time = time
+    time += when (units) {
+        TimeUnits.SECOND -> value * SECOND
+        TimeUnits.MINUTE -> value * MINUTE
+        TimeUnits.HOUR -> value * HOUR
+        TimeUnits.DAY -> value * DAY
+        else -> 3
+    }
+    this.time = time
+    return this
+}
 fun Date.humanizeDiff(diffDate: Date = Date()): String {
     var cal = GregorianCalendar.getInstance()
     var cal2 = GregorianCalendar.getInstance()
@@ -86,7 +97,26 @@ fun Date.humanizeDiff(): String {
 
 enum class TimeUnits {
     SECOND, MINUTE, HOUR, DAY, MONTH, YEAR;
+//    Необходимо реализовать метод plural для enum TimeUnits
+//    +2
+//    Реализуй метод plural для всех перечислений TimeUnits следующего вида TimeUnits.SECOND.plural(value:Int) возвращающую значение с праильно склоненной единицой измерения
+//    Пример:
+//    TimeUnits.SECOND.plural(1) //1 секунду
+//    TimeUnits.MINUTE.plural(4) //4 минуты
+//    TimeUnits.HOUR.plural(19) //19 часов
+//    TimeUnits.DAY.plural(222) //222 дня
 
+    fun plural(value:Int):String {
+        if (value == 0) return "только что"
+        return when (this) {
+            SECOND -> getNormalFormSecond(value.toLong())
+            MINUTE -> getNormalFormMinute(value.toLong())
+            HOUR -> getNormalFormHour(value.toLong())
+            DAY -> getNormalFormDay(value.toLong())
+            MONTH -> getNormalFormDay(value.toLong())
+            YEAR -> getNormalFormYear(value.toLong())
+        }
+    }
     override fun toString(): String {
         return this.ordinal.toString()
     }
