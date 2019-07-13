@@ -140,7 +140,7 @@ fun AppCompatActivity.hideKeyboard() {
     imm.hideSoftInputFromWindow(view!!.getWindowToken(), 0)
 }
 
-fun AppCompatActivity.isKeyboardOpen(): Boolean {
+fun Activity.isKeyboardOpen(): Boolean {
     val r = Rect()
     val rootview = this.window.decorView
     rootview.getWindowVisibleDisplayFrame(r)
@@ -152,4 +152,4 @@ fun AppCompatActivity.isKeyboardOpen(): Boolean {
     return (heightDifference > 300)
 }
 
-fun AppCompatActivity.isKeyboardClosed() = !isKeyboardOpen()
+fun Activity.isKeyboardClosed() = !isKeyboardOpen()
