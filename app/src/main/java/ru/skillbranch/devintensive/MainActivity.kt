@@ -16,12 +16,7 @@ import android.graphics.Rect
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import androidx.core.content.ContextCompat.getSystemService
-import android.R.attr.top
-import android.R.attr.bottom
-import android.opengl.ETC1.getHeight
-
-
+import ru.skillbranch.devintensive.models.Bender
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {

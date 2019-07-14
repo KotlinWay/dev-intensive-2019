@@ -24,7 +24,7 @@ fun Activity.isKeyboardOpen(): Boolean {
 //    Log.d("M_MainActivity", "Rect ${r.bottom} ${r.top}" )
 //    Log.d("M_MainActivity", "screenHeight $screenHeight" )
 //    Log.d("M_MainActivity", "heightDifference $heightDifference" )
-    return (heightDifference > 300)
+    return (heightDifference > 200)
 }
 
 fun Activity.isKeyboardClosed() = !isKeyboardOpen()
