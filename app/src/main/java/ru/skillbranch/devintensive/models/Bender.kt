@@ -21,23 +21,23 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
 
         }
         return if (question.answers.contains(trimAnswer.toLowerCase())) {
-//            when (question){
-//                Question.NAME -> {
-//                    val first = trimAnswer.first()
-//                    val firstCapital = first.toUpperCase()
-//                    if (first != firstCapital) {
-//                        return "Имя должно начинаться с заглавной буквы\n${question.question}" to status.color
-//                    }
-//                }
-//                Question.PROFESSION -> {
-//                    val first = trimAnswer.first()
-//                    val firstCapital = first.toLowerCase()
-//                    if (first != firstCapital) {
-//                        return "Профессия должна начинаться со строчной буквы\n${question.question}" to status.color
-//                    }
-//                }
-//
-//            }
+            when (question){
+                Question.NAME -> {
+                    val first = trimAnswer.first()
+                    val firstCapital = first.toUpperCase()
+                    if (first != firstCapital) {
+                        return "Имя должно начинаться с заглавной буквы\n${question.question}" to status.color
+                    }
+                }
+                Question.PROFESSION -> {
+                    val first = trimAnswer.first()
+                    val firstCapital = first.toLowerCase()
+                    if (first != firstCapital) {
+                        return "Профессия должна начинаться со строчной буквы\n${question.question}" to status.color
+                    }
+                }
+
+            }
             question = question.nextQuestion()
             "Отлично - ты справился\n${question.question}" to status.color
         } else {
@@ -68,7 +68,6 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
                 status = Status.NORMAL
                 question = Question.NAME
                 "Это неправильный ответ. Давай все по новой\n${question.question}" to status.color
-
             } else {
                 sendError()
             }
@@ -77,7 +76,7 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
 
     private fun sendError(): Pair<String, Triple<Int, Int, Int>> {
         status = status.nextStatus()
-        return "Это не правильный ответ!\n${question.question}" to status.color
+        return "Это неправильный ответ!\n${question.question}" to status.color
     }
 
     enum class Status(val color: Triple<Int, Int, Int>) {
