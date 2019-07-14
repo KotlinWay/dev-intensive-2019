@@ -76,7 +76,7 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
 
     private fun sendError(): Pair<String, Triple<Int, Int, Int>> {
         status = status.nextStatus()
-        return "Это неправильный ответ!\n${question.question}" to status.color
+        return "Это неправильный ответ\n${question.question}" to status.color
     }
 
     enum class Status(val color: Triple<Int, Int, Int>) {
