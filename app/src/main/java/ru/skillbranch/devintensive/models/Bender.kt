@@ -21,23 +21,23 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
 
         }
         return if (question.answers.contains(trimAnswer.toLowerCase())) {
-            when (question){
-                Question.NAME -> {
-                    val first = trimAnswer.first()
-                    val firstCapital = first.toUpperCase()
-                    if (first != firstCapital) {
-                        return "Имя должно начинаться с заглавной буквы\n${question.question}" to status.color
-                    }
-                }
-                Question.PROFESSION -> {
-                    val first = trimAnswer.first()
-                    val firstCapital = first.toLowerCase()
-                    if (first != firstCapital) {
-                        return "Профессия должна начинаться со строчной буквы\n${question.question}" to status.color
-                    }
-                }
-
-            }
+//            when (question){
+//                Question.NAME -> {
+//                    val first = trimAnswer.first()
+//                    val firstCapital = first.toUpperCase()
+//                    if (first != firstCapital) {
+//                        return "Имя должно начинаться с заглавной буквы\n${question.question}" to status.color
+//                    }
+//                }
+//                Question.PROFESSION -> {
+//                    val first = trimAnswer.first()
+//                    val firstCapital = first.toLowerCase()
+//                    if (first != firstCapital) {
+//                        return "Профессия должна начинаться со строчной буквы\n${question.question}" to status.color
+//                    }
+//                }
+//
+//            }
             question = question.nextQuestion()
             "Отлично - ты справился\n${question.question}" to status.color
         } else {
