@@ -1,9 +1,5 @@
 package ru.skillbranch.devintensive.utils
 
-import ru.skillbranch.devintensive.extensions.TimeUnits
-import java.lang.StringBuilder
-import java.util.*
-
 object Utils {
     fun parseFullName(fullName: String?): Pair<String?, String?> {
 
@@ -24,10 +20,10 @@ object Utils {
     }
 
 
-    fun toInitials(firstName:String?, lastName:String?):String?{
+    fun toInitials(firstName: String?, lastName: String?): String? {
         val firstChar = firstName?.trim()?.firstOrNull()?.toUpperCase()
         val secondChar = lastName?.trim()?.firstOrNull()?.toUpperCase()
-        return when(firstChar to secondChar){
+        return when (firstChar to secondChar) {
             null to null -> null
             null to secondChar -> secondChar.toString()
             firstChar to null -> firstChar.toString()
@@ -36,12 +32,12 @@ object Utils {
     }
 
 
-
-    fun transliteration(payload:String, divider:String = " "): String{
+    fun transliteration(payload: String, divider: String = " "): String {
+        if (payload.trim().isEmpty()) return ""
         var result = StringBuilder()
 
-        for (c in payload){
-            result.append(when(c){
+        for (c in payload) {
+            result.append(when (c) {
                 'а' -> "a"
                 'б' -> "b"
                 'в' -> "v"
@@ -115,4 +111,32 @@ object Utils {
         return result.toString()
     }
 
+    fun validLinkToGithub(s: String): Boolean {
+        var isValid = true
+        val setExceptions = setOf("enterprise", "features", "topics", "collections", "trending", "events", "marketplace", "pricing", "nonprofit", "customer-stories", "security", "login", "join")
+        when {
+            s.trim() == "" -> isValid = true
+            s.startsWith("https://github.com") -> {
+                val tempString = s.substring("https://github.com".length, s.length)
+                if (tempString.contains("/")) isValid = false
+                if (setExceptions.contains(tempString)) isValid = false
+                if (tempString.trim() == "") isValid = false
+            }
+            s.startsWith("www.github.com") -> {
+                val tempString = s.substring("www.github.com".length, s.length)
+                if (tempString.contains("/")) isValid = false
+                if (setExceptions.contains(tempString)) isValid = false
+                if (tempString.trim() == "") isValid = false
+            }
+            s.startsWith("https://www.github.com") -> {
+                val tempString = s.substring("https://www.github.com".length,  s.length)
+                if (tempString.contains("/")) isValid = false
+                if (setExceptions.contains(tempString)) isValid = false
+                if (tempString.trim() == "") isValid = false
+            }
+            else -> isValid = false
+
+        }
+        return isValid
+    }
 }

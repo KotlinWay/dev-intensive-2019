@@ -18,7 +18,6 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
         }
         if (question == Question.IDLE) {
             return "На этом все, вопросов больше нет" to status.color
-
         }
         return if (question.answers.contains(trimAnswer.toLowerCase())) {
             when (question){
